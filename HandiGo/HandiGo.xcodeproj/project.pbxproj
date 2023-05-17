@@ -13,6 +13,14 @@
 		608C18A22A149C62006925F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608C18A12A149C62006925F7 /* Preview Assets.xcassets */; };
 		608C18A42A149C62006925F7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18A32A149C62006925F7 /* Persistence.swift */; };
 		608C18A72A149C62006925F7 /* HandiGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 608C18A52A149C62006925F7 /* HandiGo.xcdatamodeld */; };
+		608C18B32A14A57D006925F7 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18B22A14A57D006925F7 /* DriverView.swift */; };
+		608C18B62A14A5D0006925F7 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 608C18B52A14A5D0006925F7 /* Models */; };
+		608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18B72A14ABE0006925F7 /* PassengerView.swift */; };
+		608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18B92A14ABFF006925F7 /* AcceptRideView.swift */; };
+		608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */; };
+		608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BD2A14AC20006925F7 /* DriverViewModel.swift */; };
+		608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */; };
+		608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18C12A14AF0F006925F7 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +33,13 @@
 		608C18A62A149C62006925F7 /* HandiGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiGo.xcdatamodel; sourceTree = "<group>"; };
 		608C18AE2A149C83006925F7 /* Backend */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Backend; path = ../Backend; sourceTree = "<group>"; };
 		608C18AF2A149C8F006925F7 /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Models; path = ../Models; sourceTree = "<group>"; };
+		608C18B22A14A57D006925F7 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
+		608C18B72A14ABE0006925F7 /* PassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerView.swift; sourceTree = "<group>"; };
+		608C18B92A14ABFF006925F7 /* AcceptRideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRideView.swift; sourceTree = "<group>"; };
+		608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconPassengerView.swift; sourceTree = "<group>"; };
+		608C18BD2A14AC20006925F7 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
+		608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerViewModel.swift; sourceTree = "<group>"; };
+		608C18C12A14AF0F006925F7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				608C18B62A14A5D0006925F7 /* Models in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +60,7 @@
 				608C18AD2A149C83006925F7 /* Packages */,
 				608C18992A149C61006925F7 /* HandiGo */,
 				608C18982A149C61006925F7 /* Products */,
+				608C18B42A14A5D0006925F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +75,15 @@
 		608C18992A149C61006925F7 /* HandiGo */ = {
 			isa = PBXGroup;
 			children = (
+				608C189C2A149C61006925F7 /* ContentView.swift */,
+				608C18B12A14A55F006925F7 /* ViewModels */,
 				608C18B02A14A4B1006925F7 /* Views */,
 				608C189A2A149C61006925F7 /* HandiGoApp.swift */,
-				608C189C2A149C61006925F7 /* ContentView.swift */,
 				608C189E2A149C62006925F7 /* Assets.xcassets */,
 				608C18A32A149C62006925F7 /* Persistence.swift */,
 				608C18A52A149C62006925F7 /* HandiGo.xcdatamodeld */,
 				608C18A02A149C62006925F7 /* Preview Content */,
+				608C18C12A14AF0F006925F7 /* Utilities.swift */,
 			);
 			path = HandiGo;
 			sourceTree = "<group>";
@@ -89,8 +108,28 @@
 		608C18B02A14A4B1006925F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				608C18B22A14A57D006925F7 /* DriverView.swift */,
+				608C18B72A14ABE0006925F7 /* PassengerView.swift */,
+				608C18B92A14ABFF006925F7 /* AcceptRideView.swift */,
+				608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		608C18B12A14A55F006925F7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				608C18BD2A14AC20006925F7 /* DriverViewModel.swift */,
+				608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		608C18B42A14A5D0006925F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +148,9 @@
 			dependencies = (
 			);
 			name = HandiGo;
+			packageProductDependencies = (
+				608C18B52A14A5D0006925F7 /* Models */,
+			);
 			productName = HandiGo;
 			productReference = 608C18972A149C61006925F7 /* HandiGo.app */;
 			productType = "com.apple.product-type.application";
@@ -163,8 +205,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */,
+				608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */,
+				608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */,
+				608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */,
 				608C18A42A149C62006925F7 /* Persistence.swift in Sources */,
+				608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */,
+				608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */,
 				608C189D2A149C61006925F7 /* ContentView.swift in Sources */,
+				608C18B32A14A57D006925F7 /* DriverView.swift in Sources */,
 				608C18A72A149C62006925F7 /* HandiGo.xcdatamodeld in Sources */,
 				608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */,
 			);
@@ -295,6 +344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HandiGo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7SJGAHRN7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -324,6 +374,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HandiGo/Preview Content\"";
+				DEVELOPMENT_TEAM = 7SJGAHRN7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -367,6 +418,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		608C18B52A14A5D0006925F7 /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		608C18A52A149C62006925F7 /* HandiGo.xcdatamodeld */ = {
