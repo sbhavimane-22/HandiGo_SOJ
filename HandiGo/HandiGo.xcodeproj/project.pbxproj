@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600469902A1548C6002CC1E8 /* RideViewModel.swift */; };
 		608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189A2A149C61006925F7 /* HandiGoApp.swift */; };
 		608C189D2A149C61006925F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189C2A149C61006925F7 /* ContentView.swift */; };
 		608C189F2A149C62006925F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608C189E2A149C62006925F7 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		600469902A1548C6002CC1E8 /* RideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewModel.swift; sourceTree = "<group>"; };
 		608C18972A149C61006925F7 /* HandiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		608C189A2A149C61006925F7 /* HandiGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandiGoApp.swift; sourceTree = "<group>"; };
 		608C189C2A149C61006925F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				608C18BD2A14AC20006925F7 /* DriverViewModel.swift */,
 				608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */,
+				600469902A1548C6002CC1E8 /* RideViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */,
 				608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */,
+				600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */,
 				608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */,
 				608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */,
 				608C18A42A149C62006925F7 /* Persistence.swift in Sources */,

@@ -13,10 +13,11 @@ class PassengerViewModel: ObservableObject {
     /// New passenger name (initially, an empty string).
     @Published var name = ""
     @Published var pickup = ""
+    @Published var dropoff = ""
 
     /// Sends a request to add a new passenger to the backend.
     func addPassenger() async throws {
-        let passenger = Passenger(name: name, pickup: pickup)
+        let passenger = Passenger(name: name, pickup: pickup, dropoff: dropoff)
         try await HTTP.post(url: HTTP.baseURL, body: passenger)
     }
 }

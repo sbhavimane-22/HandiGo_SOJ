@@ -25,6 +25,7 @@ struct PassengerView: View {
                     Form {
                         TextField("Name", text: $viewModel.name)
                         TextField("Pickup Location", text: $viewModel.pickup)
+                        TextField("Dropoff Location", text: $viewModel.dropoff)
                     }
                     if let errorMessage = errorMessage {
                         Text(errorMessage)
