@@ -29,6 +29,26 @@ func routes(_ app: Application) throws {
     app.delete(":_id") { req async throws -> Response in
         try await req.deletePassenger()
     }
+    
+    /// Doing the same thing for Ride
+    /// Handles a request to load the list of passengers.
+    app.get { req async throws -> [Ride] in
+        try await req.findRides()
+    }
+
+    /// Handles a request to add a new passenger.
+    app.post { req async throws -> Response in
+        try await req.addRide()
+    }
+
+    /// Handles a request to load info about a particular passenger.
+    app.get(":_id") { req async throws -> Ride in
+        try await req.findRide()
+    }
+
+    app.delete(":_id") { req async throws -> Response in
+        try await req.deleteRide()
+    }
 }
 
 /// Extend the `Passenger` model type to conform to Vapor's `Content` protocol so that it may be converted to and
@@ -98,57 +118,57 @@ extension Request {
     }
 }
 
-////Doing the same thing for Rides
-///// Extend the `Ride` model type to conform to Vapor's `Content` protocol so that it may be converted to and
-///// initialized from HTTP data.
-//extension Ride: Content {}
-//
-//extension Request {
-//    /// Convenience extension for obtaining a collection.
-//    var rideCollection: MongoCollection<Ride> {
-//        self.application.mongoDB.client.db("home").collection("rides", withType: Ride.self)
-//    }
-//
-//    func findRides() async throws -> [Ride] {
-//        do {
-//            return try await self.rideCollection.find().toArray()
-//        } catch {
-//            throw Abort(.internalServerError, reason: "Failed to load rides: \(error)")
-//        }
-//    }
-//
-//    func findRide() async throws -> Ride {
-//        let idFilter = try self.getIDFilter()
-//        guard let ride = try await self.rideCollection.findOne(idFilter) else {
-//            throw Abort(.notFound, reason: "No ride with matching _id")
-//        }
-//        return ride
-//    }
-//
-//    func addRide() async throws -> Response {
-//        let newRide = try self.content.decode(Ride.self)
-//        do {
-//            try await self.rideCollection.insertOne(newRide)
-//            return Response(status: .created)
-//        } catch {
-//            throw Abort(.internalServerError, reason: "Failed to save new ride: \(error)")
-//        }
-//    }
-//
-//    func deleteRide() async throws -> Response {
-//        let idFilter = try self.getIDFilter()
-//        do {
-//            // since we aren't using an unacknowledged write concern we can expect deleteOne to return a non-nil result.
-//            guard let result = try await self.rideCollection.deleteOne(idFilter) else {
-//                throw Abort(.internalServerError, reason: "Unexpectedly nil response from database")
-//            }
-//            guard result.deletedCount == 1 else {
-//                throw Abort(.notFound, reason: "No ride with matching _id")
-//            }
-//            return Response(status: .ok)
-//        } catch {
-//            throw Abort(.internalServerError, reason: "Failed to delete ride: \(error)")
-//        }
-//    }
-//}
+//Doing the same thing for Rides
+/// Extend the `Ride` model type to conform to Vapor's `Content` protocol so that it may be converted to and
+/// initialized from HTTP data.
+extension Ride: Content {}
+
+extension Request {
+    /// Convenience extension for obtaining a collection.
+    var rideCollection: MongoCollection<Ride> {
+        self.application.mongoDB.client.db("home").collection("rides", withType: Ride.self)
+    }
+
+    func findRides() async throws -> [Ride] {
+        do {
+            return try await self.rideCollection.find().toArray()
+        } catch {
+            throw Abort(.internalServerError, reason: "Failed to load rides: \(error)")
+        }
+    }
+
+    func findRide() async throws -> Ride {
+        let idFilter = try self.getIDFilter()
+        guard let ride = try await self.rideCollection.findOne(idFilter) else {
+            throw Abort(.notFound, reason: "No ride with matching _id")
+        }
+        return ride
+    }
+
+    func addRide() async throws -> Response {
+        let newRide = try self.content.decode(Ride.self)
+        do {
+            try await self.rideCollection.insertOne(newRide)
+            return Response(status: .created)
+        } catch {
+            throw Abort(.internalServerError, reason: "Failed to save new ride: \(error)")
+        }
+    }
+
+    func deleteRide() async throws -> Response {
+        let idFilter = try self.getIDFilter()
+        do {
+            // since we aren't using an unacknowledged write concern we can expect deleteOne to return a non-nil result.
+            guard let result = try await self.rideCollection.deleteOne(idFilter) else {
+                throw Abort(.internalServerError, reason: "Unexpectedly nil response from database")
+            }
+            guard result.deletedCount == 1 else {
+                throw Abort(.notFound, reason: "No ride with matching _id")
+            }
+            return Response(status: .ok)
+        } catch {
+            throw Abort(.internalServerError, reason: "Failed to delete ride: \(error)")
+        }
+    }
+}
 

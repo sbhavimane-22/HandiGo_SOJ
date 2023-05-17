@@ -31,6 +31,14 @@ extension Passenger {
     }
 }
 
+extension Ride {
+    /// Corresponding URL for this ride on the server.
+    var resourceURL: URL {
+        // Use the hexademical string representation of the `BSONObjectID`.
+        HTTP.baseURL.appendingPathComponent(self.id.hex)
+    }
+}
+
 /// Errors that can result from HTTP requests.
 enum HTTPError: LocalizedError {
     case badResponse(code: Int)
