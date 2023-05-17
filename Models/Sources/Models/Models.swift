@@ -20,19 +20,13 @@ public struct Passenger: Identifiable, Codable {
     
     /// Dropoff location.
     public let dropoff: String
-    
-//    ///Driver UUID.
-//    public let driver_uuid: UUID
-//
-//    ///Did the driver accept the ride?.
-//    public let accept: Bool
 
     private enum CodingKeys: String, CodingKey {
         // We store the identifier under the name `id` on the struct to satisfy the requirements of the `Identifiable`
         // protocol, which this type conforms to in order to allow usage with certain SwiftUI features. However,
         // MongoDB uses the name `_id` for unique identifiers, so we need to use `_id` in the extended JSON
         // representation of this type.
-        case id = "_id", name, pickup, dropoff//, driver_uuid, accept
+        case id = "_id", name, pickup, dropoff
     }
 
     /// Initializes a new `Passenger` instance. If an `id` is not provided, a new one will be generated automatically.
@@ -41,15 +35,11 @@ public struct Passenger: Identifiable, Codable {
         name: String,
         pickup: String,
         dropoff: String
-//        driver_uuid: UUID,
-//        accept: Bool
     ) {
         self.id = id
         self.name = name
         self.pickup = pickup
         self.dropoff = dropoff
-//        self.driver_uuid = driver_uuid
-//        self.accept = accept
     }
 }
 

@@ -12,41 +12,41 @@ import Vapor
 // Adds API routes to the application.
 func routes(_ app: Application) throws {
     /// Handles a request to load the list of passengers.
-    app.get { req async throws -> [Passenger] in
+    app.get("passenger") { req async throws -> [Passenger] in
         try await req.findPassengers()
     }
 
     /// Handles a request to add a new passenger.
-    app.post { req async throws -> Response in
+    app.post("passenger") { req async throws -> Response in
         try await req.addPassenger()
     }
 
     /// Handles a request to load info about a particular passenger.
-    app.get(":_id") { req async throws -> Passenger in
+    app.get("passenger", ":_id") { req async throws -> Passenger in
         try await req.findPassenger()
     }
 
-    app.delete(":_id") { req async throws -> Response in
+    app.delete("passenger", ":_id") { req async throws -> Response in
         try await req.deletePassenger()
     }
     
     /// Doing the same thing for Ride
     /// Handles a request to load the list of passengers.
-    app.get { req async throws -> [Ride] in
+    app.get("ride") { req async throws -> [Ride] in
         try await req.findRides()
     }
 
     /// Handles a request to add a new passenger.
-    app.post { req async throws -> Response in
+    app.post("ride") { req async throws -> Response in
         try await req.addRide()
     }
 
     /// Handles a request to load info about a particular passenger.
-    app.get(":_id") { req async throws -> Ride in
+    app.get("ride", ":_id") { req async throws -> Ride in
         try await req.findRide()
     }
 
-    app.delete(":_id") { req async throws -> Response in
+    app.delete("ride", ":_id") { req async throws -> Response in
         try await req.deleteRide()
     }
 }
