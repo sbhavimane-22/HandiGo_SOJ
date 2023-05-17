@@ -29,26 +29,6 @@ func routes(_ app: Application) throws {
     app.delete(":_id") { req async throws -> Response in
         try await req.deletePassenger()
     }
-    
-//    /// Doing the same thing for rides
-//    /// /// Handles a request to load the list of rides.
-//    app.get { req async throws -> [Ride] in
-//        try await req.findRides()
-//    }
-//
-//    /// Handles a request to add a new ride.
-//    app.post { req async throws -> Response in
-//        try await req.addRide()
-//    }
-//
-//    /// Handles a request to load info about a particular ride.
-//    app.get(":_id") { req async throws -> Ride in
-//        try await req.findRide()
-//    }
-//
-//    app.delete(":_id") { req async throws -> Response in
-//        try await req.deleteRide()
-//    }
 }
 
 /// Extend the `Passenger` model type to conform to Vapor's `Content` protocol so that it may be converted to and
@@ -171,4 +151,4 @@ extension Request {
 //        }
 //    }
 //}
-//
+
