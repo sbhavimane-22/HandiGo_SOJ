@@ -30,7 +30,7 @@ struct DriverView: View {
                             // Each element in the list is a link that, if clicked, will open the view/update/delete
                             // view for the corresponding kitten.
                             NavigationLink(
-                                destination: AcceptRideView(viewModel: RideViewModel(), passenger_name: passenger.name, pickup: passenger.pickup, dropoff: passenger.dropoff)
+                                destination: AcceptRideView() //AcceptRideView(viewModel: RideViewModel(), passenger_name: passenger.name, pickup: passenger.pickup, dropoff: passenger.dropoff)
                             ) {
                                 Text(passenger.name)
                                     .font(.title3)
