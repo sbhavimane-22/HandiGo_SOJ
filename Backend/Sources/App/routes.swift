@@ -38,7 +38,7 @@ extension Passenger: Content {}
 extension Request {
     /// Convenience extension for obtaining a collection.
     var passengerCollection: MongoCollection<Passenger> {
-        self.application.mongoDB.client.db("home").collection("ActiveUsers.passengers", withType: Passenger.self)
+        self.application.mongoDB.client.db("home").collection("passengers", withType: Passenger.self)
     }
 
     /// Constructs a document using the _id from this request which can be used a filter for MongoDB
