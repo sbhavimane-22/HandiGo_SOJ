@@ -1,6 +1,6 @@
 //
 //  routes.swift
-//  
+//
 //
 //  Created by Shishira Bhavimane on 5/17/23.
 //
@@ -126,7 +126,7 @@ extension Ride: Content {}
 extension Request {
     /// Convenience extension for obtaining a collection.
     var rideCollection: MongoCollection<Ride> {
-        self.application.mongoDB.client.db("newHome").collection("rides", withType: Ride.self)
+        self.application.mongoDB.client.db("home").collection("rides", withType: Ride.self)
     }
 
     func findRides() async throws -> [Ride] {
@@ -171,4 +171,3 @@ extension Request {
         }
     }
 }
-

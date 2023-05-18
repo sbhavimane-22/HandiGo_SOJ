@@ -15,7 +15,8 @@ class DriverViewModel: ObservableObject {
 
     /// Loads an updated list of riders from the backend server.
     func fetchPassengers() async throws {
-        let passengers = try await HTTP.get(url: HTTP.baseURL, dataType: [Passenger].self)
+        guard let url = URL(string: "passenger", relativeTo: HTTP.baseURL) else { return }
+        let passengers = try await HTTP.get(url: url, dataType: [Passenger].self)
         // we do this on the main queue so that when the value is updated the view will automatically be refreshed.
         DispatchQueue.main.async {
             self.passengers = passengers

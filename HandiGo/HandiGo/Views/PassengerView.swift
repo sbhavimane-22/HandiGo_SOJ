@@ -49,10 +49,6 @@ struct PassengerView: View {
     private func addPassenger() {
         self.errorMessage = nil
         self.busy = true
-        
-        viewModel.driver_uuid = UUID()
-        viewModel.accept = false
-        
         Task {
             do {
                 try await viewModel.addPassenger()
