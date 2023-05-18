@@ -12,11 +12,10 @@ import SwiftUI
 struct PassengerView: View {
     /// Model for the data in this view.
     @ObservedObject var viewModel: PassengerViewModel
-    /// Presentation mode environment key. This is used to enable the view to dismiss itself on button presses.
-    @Environment(\.presentationMode) private var presentationMode
 
     @State private var errorMessage: String?
     @State private var busy = false
+    @State private var showNextView = false
 
     var body: some View {
         NavigationView {
@@ -34,9 +33,19 @@ struct PassengerView: View {
                     HStack {
                         Button("Request Ride") {
                             addPassenger()
+                            showNextView = true
                         }
                         .disabled(viewModel.name.isEmpty)
+                        .disabled(viewModel.pickup.isEmpty)
+                        .disabled(viewModel.dropoff.isEmpty)
                         .buttonStyle(.borderedProminent)
+                        
+                        NavigationLink(
+                            destination: RideView(),
+                            isActive: $showNextView,
+                            label: { EmptyView() }
+                        )
+                        .hidden() // Hide the link, only using it for navigation
                     }
                 }
                 if busy {
@@ -52,7 +61,6 @@ struct PassengerView: View {
         Task {
             do {
                 try await viewModel.addPassenger()
-                presentationMode.wrappedValue.dismiss()
             } catch {
                 errorMessage = "Failed to add passenger: \(error.localizedDescription)"
                 busy = false

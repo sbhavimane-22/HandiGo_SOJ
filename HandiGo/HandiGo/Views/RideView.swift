@@ -1,22 +1,20 @@
 //
-//  DriverView.swift
+//  RideView.swift
 //  HandiGo
 //
-//  Created by Shishira Bhavimane on 5/17/23.
+//  Created by Shishira Bhavimane on 5/18/23.
 //
 
-import Models
 import SwiftUI
 
-/// Main view displaying a list of riders.
-struct DriverView: View {
+struct RideView: View {
     /// Model for the data in this view.
-    @StateObject private var viewModel = DriverViewModel()
+    @StateObject private var viewModel = PassengerRideViewModel()
 
     @State private var showingAddModal = false
     @State private var busy = false
     @State private var errorMessage: String?
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,21 +24,21 @@ struct DriverView: View {
                             .foregroundColor(.red)
                     }
                     List {
-                        ForEach(viewModel.passengers) { passenger in
+                        ForEach(viewModel.rides) { ride in
                             // Each element in the list is a link that, if clicked, will open the view/update/delete
-                            // view for the corresponding kitten.
+                            // view for the corresponding ride.
                             NavigationLink(
-                                destination: AcceptRideView(viewModel: RideViewModel(), passenger_name: passenger.name, pickup: passenger.pickup, dropoff: passenger.dropoff)
+                                destination: DistanceView(beaconUUID: ride.driver_uuid)
                             ) {
-                                Text(passenger.name)
+                                Text(ride.passenger_name)
                                     .font(.title3)
-                                Text(passenger.pickup)
-                                Text(passenger.dropoff)
+                                Text(ride.pickup)
+                                Text(ride.dropoff)
                             }
                         }
                     }
                     // Pull to refresh
-                    .refreshable { fetchPassengers() }
+                    .refreshable { fetchRides() }
                 }
                 if busy {
                     ProgressView()
@@ -50,35 +48,35 @@ struct DriverView: View {
                 isPresented: $showingAddModal,
                 onDismiss: {
                     // On dismiss, retrieve an updated list of riders.
-                    fetchPassengers()
+                    fetchRides()
                 }
             ) {
-                PassengerView(viewModel: PassengerViewModel())
+                AcceptRideView(viewModel: RideViewModel(), passenger_name: "", pickup: "", dropoff: "")
             }
             // When the view appears, retrieve an updated list of riders.
-            .onAppear(perform: fetchPassengers)
-            .navigationBarTitle("Passengers", displayMode: .inline)
+            .onAppear(perform: fetchRides)
+            .navigationBarTitle("Ride:", displayMode: .inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-
-    private func fetchPassengers() {
+    
+    private func fetchRides() {
         self.busy = true
         self.errorMessage = nil
         Task {
             do {
-                try await viewModel.fetchPassengers()
+                try await viewModel.fetchRides()
                 busy = false
             } catch {
                 busy = false
-                errorMessage = "Failed to fetch list of passengers: \(error.localizedDescription)"
+                errorMessage = "Failed to fetch list of rides: \(error.localizedDescription)"
             }
         }
     }
 }
 
-struct DriverView_Previews: PreviewProvider {
+struct RideView_Previews: PreviewProvider {
     static var previews: some View {
-        DriverView()
+        RideView()
     }
 }

@@ -61,7 +61,7 @@ enum HTTP {
 //    static let baseURL = URL(string: "http://127.0.0.1:8080")!
 //    static let baseURL = URL(string: "http://Shishiras-MacBook-Air.local:8080")!
 //    static let baseURL = URL(string: "http://localhost:8080")!
-    static let baseURL = URL(string: "https://0558-2601-240-c402-1340-c9a1-b077-96b5-6216.ngrok-free.app")!
+    static let baseURL = URL(string: "https://ea5f-128-135-204-49.ngrok-free.app")!
 
     /// Supported HTTP methods.
     enum Method: String {

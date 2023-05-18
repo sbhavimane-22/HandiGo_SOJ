@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600469902A1548C6002CC1E8 /* RideViewModel.swift */; };
 		6025551E2A15A7EA007606E4 /* iBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025551D2A15A7EA007606E4 /* iBeaconView.swift */; };
+		6085721C2A169A3C0090C609 /* RideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721B2A169A3C0090C609 /* RideView.swift */; };
+		6085721E2A169C8C0090C609 /* PassengerRideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721D2A169C8C0090C609 /* PassengerRideViewModel.swift */; };
+		608572202A16A35C0090C609 /* DriverBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721F2A16A35C0090C609 /* DriverBeaconView.swift */; };
+		608572222A16AF030090C609 /* TestBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608572212A16AF030090C609 /* TestBeaconView.swift */; };
+		608572242A16BF620090C609 /* iBeaconTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608572232A16BF620090C609 /* iBeaconTestingView.swift */; };
 		608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189A2A149C61006925F7 /* HandiGoApp.swift */; };
 		608C189D2A149C61006925F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189C2A149C61006925F7 /* ContentView.swift */; };
 		608C189F2A149C62006925F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608C189E2A149C62006925F7 /* Assets.xcassets */; };
@@ -28,6 +33,11 @@
 /* Begin PBXFileReference section */
 		600469902A1548C6002CC1E8 /* RideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewModel.swift; sourceTree = "<group>"; };
 		6025551D2A15A7EA007606E4 /* iBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconView.swift; sourceTree = "<group>"; };
+		6085721B2A169A3C0090C609 /* RideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideView.swift; sourceTree = "<group>"; };
+		6085721D2A169C8C0090C609 /* PassengerRideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerRideViewModel.swift; sourceTree = "<group>"; };
+		6085721F2A16A35C0090C609 /* DriverBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverBeaconView.swift; sourceTree = "<group>"; };
+		608572212A16AF030090C609 /* TestBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBeaconView.swift; sourceTree = "<group>"; };
+		608572232A16BF620090C609 /* iBeaconTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconTestingView.swift; sourceTree = "<group>"; };
 		608C18972A149C61006925F7 /* HandiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		608C189A2A149C61006925F7 /* HandiGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandiGoApp.swift; sourceTree = "<group>"; };
 		608C189C2A149C61006925F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +127,10 @@
 				608C18B92A14ABFF006925F7 /* AcceptRideView.swift */,
 				608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */,
 				6025551D2A15A7EA007606E4 /* iBeaconView.swift */,
+				6085721B2A169A3C0090C609 /* RideView.swift */,
+				6085721F2A16A35C0090C609 /* DriverBeaconView.swift */,
+				608572212A16AF030090C609 /* TestBeaconView.swift */,
+				608572232A16BF620090C609 /* iBeaconTestingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +141,7 @@
 				608C18BD2A14AC20006925F7 /* DriverViewModel.swift */,
 				608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */,
 				600469902A1548C6002CC1E8 /* RideViewModel.swift */,
+				6085721D2A169C8C0090C609 /* PassengerRideViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -211,9 +226,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				608572222A16AF030090C609 /* TestBeaconView.swift in Sources */,
+				608572202A16A35C0090C609 /* DriverBeaconView.swift in Sources */,
 				608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */,
 				608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */,
+				6085721C2A169A3C0090C609 /* RideView.swift in Sources */,
 				600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */,
+				6085721E2A169C8C0090C609 /* PassengerRideViewModel.swift in Sources */,
+				608572242A16BF620090C609 /* iBeaconTestingView.swift in Sources */,
 				608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */,
 				608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */,
 				608C18A42A149C62006925F7 /* Persistence.swift in Sources */,
@@ -355,6 +375,8 @@
 				DEVELOPMENT_TEAM = 7SJGAHRN7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth access to advertise the device as a beacon";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using location to determine passenger distance from driver";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -385,6 +407,8 @@
 				DEVELOPMENT_TEAM = 7SJGAHRN7B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth access to advertise the device as a beacon";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using location to determine passenger distance from driver";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

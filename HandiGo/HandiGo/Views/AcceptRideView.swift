@@ -10,8 +10,6 @@ import SwiftUI
 struct AcceptRideView: View {
     /// Model for the data in this view.
     @ObservedObject var viewModel: RideViewModel
-    /// Presentation mode environment key. This is used to enable the view to dismiss itself on button presses.
-    @Environment(\.presentationMode) private var presentationMode
     
     //let viewModel: RideViewModel
     let passenger_name: String
@@ -39,17 +37,18 @@ struct AcceptRideView: View {
                 // generating a UUID for the driver
                 uuid = UUID()
                 viewModel.driver_uuid = uuid
-                
+
                 // setting model parameters
                 viewModel.passenger_name = passenger_name
                 viewModel.pickup = pickup
                 viewModel.dropoff = dropoff
-                
+
+                addRide()
                 showNextView = true
             }.buttonStyle(BlueButton())
-            
+
             NavigationLink(
-                destination: iBeaconPassengerView(myUUID: uuid), //iBeaconPassengerView(myUUID: uuid),
+                destination: BeaconView(beaconUUID: uuid),
                 isActive: $showNextView,
                 label: { EmptyView() }
             )
@@ -63,7 +62,6 @@ struct AcceptRideView: View {
         Task {
             do {
                 try await viewModel.addRide()
-                presentationMode.wrappedValue.dismiss()
             } catch {
                 errorMessage = "Failed to add ride: \(error.localizedDescription)"
                 busy = false
