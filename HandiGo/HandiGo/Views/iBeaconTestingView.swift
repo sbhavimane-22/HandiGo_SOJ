@@ -25,9 +25,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func startMonitoring() {
-        let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
-        locationManager.startRangingBeacons(in: beaconRegion)
-    }
+            let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
+            locationManager.startRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
+        }
+    
+//    func startMonitoring() {
+//        let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
+//        locationManager.startRangingBeacons(in: beaconRegion)
+//    }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         guard let closestBeacon = beacons.first else {
@@ -61,7 +66,7 @@ class BeaconManager: NSObject, ObservableObject, CBPeripheralManagerDelegate {
         if peripheral.state == .poweredOn {
             // Start advertising when the peripheral is ready
             startAdvertising()
-        }
+        } else { return }
     }
 }
 
@@ -81,9 +86,15 @@ struct BeaconView: View {
                 .padding()
             
             Button(action: {
-                beaconManager.startAdvertising()
+                let centralManager = CBCentralManager()
+                if centralManager.state == .poweredOn {
+                    beaconManager.startAdvertising()
+                } else {
+                    // Bluetooth is not powered on, handle the error or prompt the user to enable Bluetooth
+                    return
+                }
             }) {
-                Text("Start Advertising")
+                Text("I've arrived")
                     .font(.headline)
                     .padding()
                     .background(Color.blue)
