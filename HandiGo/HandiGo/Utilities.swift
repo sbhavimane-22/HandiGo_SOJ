@@ -58,8 +58,10 @@ enum HTTP {
     /// Base URL where our application is running.
     // Ok to force unwrap since we know this is a valid URL.
     // swiftlint:disable:next force_unwrapping
-    static let baseURL = URL(string: "http://127.0.0.1:8080")!
-//    static let baseURL = URL(string: "http://128.135.204.37:8080")!
+//    static let baseURL = URL(string: "http://127.0.0.1:8080")!
+//    static let baseURL = URL(string: "http://Shishiras-MacBook-Air.local:8080")!
+//    static let baseURL = URL(string: "http://localhost:8080")!
+    static let baseURL = URL(string: "https://0558-2601-240-c402-1340-c9a1-b077-96b5-6216.ngrok-free.app")!
 
     /// Supported HTTP methods.
     enum Method: String {
