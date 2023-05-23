@@ -23,36 +23,38 @@ struct AcceptRideView: View {
         self.dropoff = dropoff
     }
     
-    @State private var showNextView = false
     @State private var uuid = UUID()
     
     @State private var busy = false
     @State private var errorMessage: String?
+    @State private var path = [String]()
     
     var body: some View {
-        VStack {
-            Text("Do you want to accept this ride?")
-            
-            Button("Accept Ride") {
-                // generating a UUID for the driver
-                uuid = UUID()
-                viewModel.driver_uuid = uuid
-
-                // setting model parameters
-                viewModel.passenger_name = passenger_name
-                viewModel.pickup = pickup
-                viewModel.dropoff = dropoff
-
-                addRide()
-                showNextView = true
-            }.buttonStyle(BlueButton())
-
-            NavigationLink(
-                destination: BeaconView(beaconUUID: uuid),
-                isActive: $showNextView,
-                label: { EmptyView() }
-            )
-            .hidden() // Hide the link, only using it for navigation
+        NavigationStack(path: $path) {
+            VStack {
+                Text("Do you want to accept this ride?")
+                
+                Button("Accept Ride") {
+                    // generating a UUID for the driver
+                    uuid = UUID()
+                    viewModel.driver_uuid = uuid
+                    
+                    // setting model parameters
+                    viewModel.passenger_name = passenger_name
+                    viewModel.pickup = pickup
+                    viewModel.dropoff = dropoff
+                    
+                    addRide()
+                    path.append("accept")
+                }.buttonStyle(BlueButton()).navigationTitle("nav").navigationDestination(for: String.self) { route in
+                    switch route {
+                    case "accept":
+                        BeaconView(beaconUUID: testUUID!)
+                    default:
+                        EmptyView()
+                    }
+                }
+            }
         }
     }
     
