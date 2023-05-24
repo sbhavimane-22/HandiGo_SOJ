@@ -28,6 +28,7 @@
 		608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BD2A14AC20006925F7 /* DriverViewModel.swift */; };
 		608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */; };
 		608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18C12A14AF0F006925F7 /* Utilities.swift */; };
+		6092B7C42A183C9100718027 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092B7C32A183C9100718027 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		608C18BD2A14AC20006925F7 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
 		608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerViewModel.swift; sourceTree = "<group>"; };
 		608C18C12A14AF0F006925F7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		6092B7C32A183C9100718027 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				6085721F2A16A35C0090C609 /* DriverBeaconView.swift */,
 				608572212A16AF030090C609 /* TestBeaconView.swift */,
 				608572232A16BF620090C609 /* iBeaconTestingView.swift */,
+				6092B7C32A183C9100718027 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */,
 				608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */,
 				608C189D2A149C61006925F7 /* ContentView.swift in Sources */,
+				6092B7C42A183C9100718027 /* TestView.swift in Sources */,
 				608C18B32A14A57D006925F7 /* DriverView.swift in Sources */,
 				608C18A72A149C62006925F7 /* HandiGo.xcdatamodeld in Sources */,
 				608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */,

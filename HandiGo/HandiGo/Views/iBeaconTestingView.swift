@@ -25,8 +25,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func startMonitoring() {
+        print("Monitoring beacon: \(beaconUUID)")
+        print("Distance to beacon: \(self.distanceString)")
             let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
             locationManager.startRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
+        print("Beaconregion: \(beaconRegion)")
         }
     
 //    func startMonitoring() {
@@ -35,37 +38,56 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 //    }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        print("Beacons: \(beacons)")
         guard let closestBeacon = beacons.first else {
             return
         }
-        
         let distance = closestBeacon.accuracy
-        distanceString = String(format: "%.2f meters", distance)
+        self.distanceString = String(format: "%.2f meters", distance)
+        print("Distance to beacon: \(self.distanceString)")
     }
+    
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+      print("Failed monitoring region: \(error.localizedDescription)")
+    }
+      
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+      print("Location manager failed: \(error.localizedDescription)")
+    }
+    
 }
 
 class BeaconManager: NSObject, ObservableObject, CBPeripheralManagerDelegate {
-    private var peripheralManager: CBPeripheralManager?
+    
+    var peripheralManager: CBPeripheralManager?
     let beaconUUID: UUID
+    let beaconRegion: CLBeaconRegion!
+//    var centralManager: CBCentralManager!
     
     init(beaconUUID: UUID) {
         self.beaconUUID = beaconUUID
-    }
-    
-    func startAdvertising() {
         let major: CLBeaconMajorValue = 12345 // Replace with your own major value
         let minor: CLBeaconMinorValue = 56890 // Replace with your own minor value
-        let beaconRegion = CLBeaconRegion(uuid: beaconUUID, major: major, minor: minor, identifier: "YourBeaconIdentifier")
-        
-        let peripheralData = beaconRegion.peripheralData(withMeasuredPower: nil)
+        beaconRegion = CLBeaconRegion(uuid: beaconUUID, major: major, minor: minor, identifier: "YourBeaconIdentifier")
+        super.init()
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        
+    }
+    
+//    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+//        print("cbcentralmanager initialized")
+//    }
+    
+    func startAdvertising() {
+        print("ATTEMPTING TO START ADVERTISING UUID \(self.beaconUUID)")
+        let peripheralData = beaconRegion.peripheralData(withMeasuredPower: nil)
         peripheralManager?.startAdvertising(((peripheralData as NSDictionary) as! [String: Any]))
     }
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
-            // Start advertising when the peripheral is ready
-            startAdvertising()
+            // DEBUG message, peripheral manager should have been switched to on
+            print("peripheral state: \(peripheral.state)")
         } else { return }
     }
 }
@@ -86,11 +108,18 @@ struct BeaconView: View {
                 .padding()
             
             Button(action: {
-                let centralManager = CBCentralManager()
-                if centralManager.state == .poweredOn {
-                    beaconManager.startAdvertising()
-                } else {
-                    // Bluetooth is not powered on, handle the error or prompt the user to enable Bluetooth
+                if (beaconManager.peripheralManager != nil) {
+                    if beaconManager.peripheralManager?.state == .poweredOn {
+                        beaconManager.startAdvertising()
+                    }
+                    else {
+                        print("LINE108")
+                        // Bluetooth is not powered on, handle the error or prompt the user to enable Bluetooth
+                        return
+                    }
+                }
+                else {
+                    print("peripheral manager uninitialized")
                     return
                 }
             }) {
@@ -128,7 +157,8 @@ struct DistanceView: View {
                 .padding()
             
             Button(action: {
-                locationManager.requestAuthorization()
+                Task { locationManager.requestAuthorization()
+                }
                 locationManager.startMonitoring()
             }) {
                 Text("Start Monitoring")
@@ -148,4 +178,3 @@ struct DistanceView_Previews: PreviewProvider {
         DistanceView(beaconUUID: UUID())
     }
 }
-
