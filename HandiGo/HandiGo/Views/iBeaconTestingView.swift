@@ -22,10 +22,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var distanceString = "Driver has not arrived yet."
     @Published var distance = 1000.0 {
         didSet {
+            
             if (distance < mindist && abs(mindist - distance) > 0.5) {
                 mindist = distance
                 AudioServicesPlayAlertSound(closerSound)
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+            else {
+                if (distance > oldValue) {
+                    mindist = distance
+                }
             }
             
             if (distance < 0.05 && !immediateProximity) {
