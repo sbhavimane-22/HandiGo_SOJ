@@ -8,14 +8,37 @@
 import SwiftUI
 import CoreLocation
 import CoreBluetooth
+import AudioToolbox
+import AVFoundation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     let beaconUUID: UUID
-    @Published var distanceString = "Unknown"
+    let closerSound: SystemSoundID = 1050
+    let confirmSound: SystemSoundID = 1075
+    private var immediateProximity = false
+    private var mindist = 1000.0
+    private var beaconRegion: CLBeaconRegion
+    @Published var distanceString = "Driver has not arrived yet."
+    @Published var distance = 1000.0 {
+        didSet {
+            if (distance < mindist && abs(mindist - distance) > 0.5) {
+                mindist = distance
+                AudioServicesPlayAlertSound(closerSound)
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+            
+            if (distance < 0.05 && !immediateProximity) {
+                immediateProximity = true
+                AudioServicesPlayAlertSound(confirmSound)
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+        }
+    }
     
     init(beaconUUID: UUID) {
         self.beaconUUID = beaconUUID
+        self.beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
         super.init()
         locationManager.delegate = self
     }
@@ -27,10 +50,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func startMonitoring() {
         print("Monitoring beacon: \(beaconUUID)")
         print("Distance to beacon: \(self.distanceString)")
-            let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
-            locationManager.startRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
+        locationManager.startRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
         print("Beaconregion: \(beaconRegion)")
         }
+    
+    func stopMonitoring() {
+        print("Stopping monitoring")
+        locationManager.stopRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
+    }
     
 //    func startMonitoring() {
 //        let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
@@ -44,6 +71,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         let distance = closestBeacon.accuracy
         self.distanceString = String(format: "%.2f meters", distance)
+        self.distance = distance
         print("Distance to beacon: \(self.distanceString)")
     }
     
@@ -142,6 +170,8 @@ struct BeaconView_Previews: PreviewProvider {
 }
 
 struct DistanceView: View {
+    @State private var showNextView = false
+    
     @StateObject private var locationManager: LocationManager
     let myUUID: UUID
 
@@ -169,6 +199,29 @@ struct DistanceView: View {
                     .cornerRadius(10)
             }
             .padding()
+            
+            if (locationManager.distance < 0.05) {
+                HStack {
+                    Button(action: {
+                        locationManager.stopMonitoring()
+                        showNextView = true
+                    }) {
+                        Text("Confirm Ride")
+                            .font(Font.custom("Helvetica", size: 50))
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 16, leading: 16, bottom: 8, trailing: 16))
+                            .background(Capsule().fill(Color.green))
+                    }
+                    
+                    NavigationLink(
+                        destination: RideStartedView(),
+                        isActive: $showNextView,
+                        label: { EmptyView() }
+                    )
+                    .hidden() // Hide the link, only using it for navigation
+                }
+            }
         }
     }
 }

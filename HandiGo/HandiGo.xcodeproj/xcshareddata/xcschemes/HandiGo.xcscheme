@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "MONGODB_URI"
-            value = "&quot;mongodb+srv://Shira:hFTV6A6h8j8GZ2tk@handicluster.4cx0ifr.mongodb.net/?retryWrites=true&amp;w=majority&quot;"
+            value = "&quot;mongodb+srv://Shira:jJH4Q7ERfJ9HpE3D@handicluster.4cx0ifr.mongodb.net/?retryWrites=true&amp;w=majority&quot;"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600227342A1EDB3F008DF9E5 /* RideStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600227332A1EDB3F008DF9E5 /* RideStartedView.swift */; };
 		600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600469902A1548C6002CC1E8 /* RideViewModel.swift */; };
 		6025551E2A15A7EA007606E4 /* iBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025551D2A15A7EA007606E4 /* iBeaconView.swift */; };
 		6085721C2A169A3C0090C609 /* RideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721B2A169A3C0090C609 /* RideView.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		600227332A1EDB3F008DF9E5 /* RideStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideStartedView.swift; sourceTree = "<group>"; };
 		600469902A1548C6002CC1E8 /* RideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewModel.swift; sourceTree = "<group>"; };
 		6025551D2A15A7EA007606E4 /* iBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconView.swift; sourceTree = "<group>"; };
 		6085721B2A169A3C0090C609 /* RideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				608572212A16AF030090C609 /* TestBeaconView.swift */,
 				608572232A16BF620090C609 /* iBeaconTestingView.swift */,
 				6092B7C32A183C9100718027 /* TestView.swift */,
+				600227332A1EDB3F008DF9E5 /* RideStartedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				608572242A16BF620090C609 /* iBeaconTestingView.swift in Sources */,
 				608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */,
 				608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */,
+				600227342A1EDB3F008DF9E5 /* RideStartedView.swift in Sources */,
 				608C18A42A149C62006925F7 /* Persistence.swift in Sources */,
 				6025551E2A15A7EA007606E4 /* iBeaconView.swift in Sources */,
 				608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */,
