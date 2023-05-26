@@ -1,10 +1,3 @@
-//
-//  RideView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/18/23.
-//
-
 import SwiftUI
 
 struct RideView: View {

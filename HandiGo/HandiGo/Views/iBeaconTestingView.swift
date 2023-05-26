@@ -1,10 +1,3 @@
-//
-//  iBeaconTestingView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/18/23.
-//
-
 import SwiftUI
 import CoreLocation
 import CoreBluetooth
@@ -23,17 +16,20 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var distance = 1000.0 {
         didSet {
             
+            // vibrate and play sound if distance is less than minimum distance
             if (distance < mindist && abs(mindist - distance) > 0.5) {
                 mindist = distance
                 AudioServicesPlayAlertSound(closerSound)
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
             else {
+                // so we make sure they can get back on the right track if they're wrong
                 if (distance > oldValue) {
                     mindist = distance
                 }
             }
             
+            // vibrate and play sound if the phones are touching (less than 5cm of distance)
             if (distance < 0.05 && !immediateProximity) {
                 immediateProximity = true
                 AudioServicesPlayAlertSound(confirmSound)
@@ -49,10 +45,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
+    // need to get user's permission for location and bluetooth
     func requestAuthorization() {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    // start looking for driver beacon
     func startMonitoring() {
         print("Monitoring beacon: \(beaconUUID)")
         print("Distance to beacon: \(self.distanceString)")
@@ -60,15 +58,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         print("Beaconregion: \(beaconRegion)")
         }
     
+    // stop looking for driver beacon
     func stopMonitoring() {
         print("Stopping monitoring")
         locationManager.stopRangingBeacons(satisfying: beaconRegion.beaconIdentityConstraint)
     }
-    
-//    func startMonitoring() {
-//        let beaconRegion = CLBeaconRegion(uuid: beaconUUID, identifier: "YourBeaconIdentifier")
-//        locationManager.startRangingBeacons(in: beaconRegion)
-//    }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         print("Beacons: \(beacons)")
@@ -96,7 +90,6 @@ class BeaconManager: NSObject, ObservableObject, CBPeripheralManagerDelegate {
     var peripheralManager: CBPeripheralManager?
     let beaconUUID: UUID
     let beaconRegion: CLBeaconRegion!
-//    var centralManager: CBCentralManager!
     
     init(beaconUUID: UUID) {
         self.beaconUUID = beaconUUID
@@ -108,10 +101,7 @@ class BeaconManager: NSObject, ObservableObject, CBPeripheralManagerDelegate {
         
     }
     
-//    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-//        print("cbcentralmanager initialized")
-//    }
-    
+    // start advertising driver's phone as a beacon
     func startAdvertising() {
         print("ATTEMPTING TO START ADVERTISING UUID \(self.beaconUUID)")
         let peripheralData = beaconRegion.peripheralData(withMeasuredPower: nil)
@@ -135,6 +125,7 @@ struct BeaconView: View {
         _beaconManager = StateObject(wrappedValue: BeaconManager(beaconUUID: beaconUUID))
     }
     
+    // let driver know they are a beacon
     var body: some View {
         VStack {
             Text("You are a Beacon")
@@ -175,6 +166,7 @@ struct BeaconView_Previews: PreviewProvider {
     }
 }
 
+// allow passenger to see their distance from the driver
 struct DistanceView: View {
     @State private var showNextView = false
     
@@ -206,6 +198,7 @@ struct DistanceView: View {
             }
             .padding()
             
+            // if distance is less than 5cm, the confirm ride button will appear
             if (locationManager.distance < 0.05) {
                 HStack {
                     Button(action: {

@@ -1,12 +1,6 @@
-//
-//  RideStartedView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/24/23.
-//
-
 import SwiftUI
 
+// simple view to display after the ride has been confirmed
 struct RideStartedView: View {
     var body: some View {
         Text("The ride has started!")

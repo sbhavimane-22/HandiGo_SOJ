@@ -1,17 +1,9 @@
-//
-//  AcceptRideView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import SwiftUI
 
 struct AcceptRideView: View {
     /// Model for the data in this view.
     @ObservedObject var viewModel: RideViewModel
     
-    //let viewModel: RideViewModel
     let passenger_name: String
     let pickup: String
     let dropoff: String
@@ -29,6 +21,7 @@ struct AcceptRideView: View {
     @State private var errorMessage: String?
     @State private var path = [String]()
     
+    // letting the driver accept the ride if they choose to do so
     var body: some View {
         NavigationStack(path: $path) {
             VStack {

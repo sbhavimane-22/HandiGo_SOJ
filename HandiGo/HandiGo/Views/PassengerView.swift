@@ -1,10 +1,3 @@
-//
-//  PassengerView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import Models
 import SwiftUI
 
@@ -17,6 +10,7 @@ struct PassengerView: View {
     @State private var busy = false
     @State private var showNextView = false
 
+    // allow the passenger to input their ride information and request a ride
     var body: some View {
         NavigationView {
             ZStack {
@@ -35,6 +29,7 @@ struct PassengerView: View {
                             addPassenger()
                             showNextView = true
                         }
+                        // gray out the button if information not entered
                         .disabled(viewModel.name.isEmpty)
                         .disabled(viewModel.pickup.isEmpty)
                         .disabled(viewModel.dropoff.isEmpty)

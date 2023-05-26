@@ -1,10 +1,3 @@
-//
-//  PassengerRideViewModel.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/18/23.
-//
-
 import Models
 import SwiftUI
 

@@ -1,10 +1,3 @@
-//
-//  routes.swift
-//
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import Models
 import MongoDBVapor
 import Vapor

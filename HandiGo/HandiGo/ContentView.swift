@@ -1,14 +1,6 @@
-//
-//  ContentView.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import SwiftUI
 
-public var testUUID = UUID(uuidString: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
-
+// button style for many of the buttons we will be using
 struct BlueButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         let isPressed = configuration.isPressed
@@ -26,6 +18,8 @@ struct BlueButton: ButtonStyle {
     }
 }
 
+// creating a view that is the home screen for the application
+// the user can choose between being a driver and a passenger
 struct ContentView: View {
     let customFont = Font.custom("Helvetica", size: 65)
     

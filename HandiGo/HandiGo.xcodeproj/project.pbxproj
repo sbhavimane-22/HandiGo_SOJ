@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		600227342A1EDB3F008DF9E5 /* RideStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600227332A1EDB3F008DF9E5 /* RideStartedView.swift */; };
 		600469912A1548C6002CC1E8 /* RideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600469902A1548C6002CC1E8 /* RideViewModel.swift */; };
-		6025551E2A15A7EA007606E4 /* iBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6025551D2A15A7EA007606E4 /* iBeaconView.swift */; };
 		6085721C2A169A3C0090C609 /* RideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721B2A169A3C0090C609 /* RideView.swift */; };
 		6085721E2A169C8C0090C609 /* PassengerRideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721D2A169C8C0090C609 /* PassengerRideViewModel.swift */; };
-		608572202A16A35C0090C609 /* DriverBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6085721F2A16A35C0090C609 /* DriverBeaconView.swift */; };
-		608572222A16AF030090C609 /* TestBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608572212A16AF030090C609 /* TestBeaconView.swift */; };
 		608572242A16BF620090C609 /* iBeaconTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608572232A16BF620090C609 /* iBeaconTestingView.swift */; };
 		608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189A2A149C61006925F7 /* HandiGoApp.swift */; };
 		608C189D2A149C61006925F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C189C2A149C61006925F7 /* ContentView.swift */; };
@@ -25,21 +22,16 @@
 		608C18B62A14A5D0006925F7 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 608C18B52A14A5D0006925F7 /* Models */; };
 		608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18B72A14ABE0006925F7 /* PassengerView.swift */; };
 		608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18B92A14ABFF006925F7 /* AcceptRideView.swift */; };
-		608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */; };
 		608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BD2A14AC20006925F7 /* DriverViewModel.swift */; };
 		608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */; };
 		608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C18C12A14AF0F006925F7 /* Utilities.swift */; };
-		6092B7C42A183C9100718027 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092B7C32A183C9100718027 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		600227332A1EDB3F008DF9E5 /* RideStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideStartedView.swift; sourceTree = "<group>"; };
 		600469902A1548C6002CC1E8 /* RideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewModel.swift; sourceTree = "<group>"; };
-		6025551D2A15A7EA007606E4 /* iBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconView.swift; sourceTree = "<group>"; };
 		6085721B2A169A3C0090C609 /* RideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideView.swift; sourceTree = "<group>"; };
 		6085721D2A169C8C0090C609 /* PassengerRideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerRideViewModel.swift; sourceTree = "<group>"; };
-		6085721F2A16A35C0090C609 /* DriverBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverBeaconView.swift; sourceTree = "<group>"; };
-		608572212A16AF030090C609 /* TestBeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBeaconView.swift; sourceTree = "<group>"; };
 		608572232A16BF620090C609 /* iBeaconTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconTestingView.swift; sourceTree = "<group>"; };
 		608572252A16CAC10090C609 /* HandiGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HandiGo.entitlements; sourceTree = "<group>"; };
 		608C18972A149C61006925F7 /* HandiGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,11 +46,9 @@
 		608C18B22A14A57D006925F7 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
 		608C18B72A14ABE0006925F7 /* PassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerView.swift; sourceTree = "<group>"; };
 		608C18B92A14ABFF006925F7 /* AcceptRideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRideView.swift; sourceTree = "<group>"; };
-		608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconPassengerView.swift; sourceTree = "<group>"; };
 		608C18BD2A14AC20006925F7 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
 		608C18BF2A14AC2B006925F7 /* PassengerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerViewModel.swift; sourceTree = "<group>"; };
 		608C18C12A14AF0F006925F7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		6092B7C32A183C9100718027 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,13 +121,8 @@
 				608C18B22A14A57D006925F7 /* DriverView.swift */,
 				608C18B72A14ABE0006925F7 /* PassengerView.swift */,
 				608C18B92A14ABFF006925F7 /* AcceptRideView.swift */,
-				608C18BB2A14AC12006925F7 /* iBeaconPassengerView.swift */,
-				6025551D2A15A7EA007606E4 /* iBeaconView.swift */,
 				6085721B2A169A3C0090C609 /* RideView.swift */,
-				6085721F2A16A35C0090C609 /* DriverBeaconView.swift */,
-				608572212A16AF030090C609 /* TestBeaconView.swift */,
 				608572232A16BF620090C609 /* iBeaconTestingView.swift */,
-				6092B7C32A183C9100718027 /* TestView.swift */,
 				600227332A1EDB3F008DF9E5 /* RideStartedView.swift */,
 			);
 			path = Views;
@@ -234,8 +219,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				608572222A16AF030090C609 /* TestBeaconView.swift in Sources */,
-				608572202A16A35C0090C609 /* DriverBeaconView.swift in Sources */,
 				608C18BA2A14ABFF006925F7 /* AcceptRideView.swift in Sources */,
 				608C18C02A14AC2B006925F7 /* PassengerViewModel.swift in Sources */,
 				6085721C2A169A3C0090C609 /* RideView.swift in Sources */,
@@ -243,14 +226,11 @@
 				6085721E2A169C8C0090C609 /* PassengerRideViewModel.swift in Sources */,
 				608572242A16BF620090C609 /* iBeaconTestingView.swift in Sources */,
 				608C18C22A14AF0F006925F7 /* Utilities.swift in Sources */,
-				608C18BC2A14AC12006925F7 /* iBeaconPassengerView.swift in Sources */,
 				600227342A1EDB3F008DF9E5 /* RideStartedView.swift in Sources */,
 				608C18A42A149C62006925F7 /* Persistence.swift in Sources */,
-				6025551E2A15A7EA007606E4 /* iBeaconView.swift in Sources */,
 				608C18B82A14ABE0006925F7 /* PassengerView.swift in Sources */,
 				608C18BE2A14AC20006925F7 /* DriverViewModel.swift in Sources */,
 				608C189D2A149C61006925F7 /* ContentView.swift in Sources */,
-				6092B7C42A183C9100718027 /* TestView.swift in Sources */,
 				608C18B32A14A57D006925F7 /* DriverView.swift in Sources */,
 				608C18A72A149C62006925F7 /* HandiGo.xcdatamodeld in Sources */,
 				608C189B2A149C61006925F7 /* HandiGoApp.swift in Sources */,

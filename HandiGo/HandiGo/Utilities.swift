@@ -1,10 +1,3 @@
-//
-//  Utilities.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import Foundation
 import Models
 import SwiftBSON
@@ -55,13 +48,8 @@ enum HTTPError: LocalizedError {
 }
 
 enum HTTP {
-    /// Base URL where our application is running.
-    // Ok to force unwrap since we know this is a valid URL.
-    // swiftlint:disable:next force_unwrapping
-//    static let baseURL = URL(string: "http://127.0.0.1:8080")!
-//    static let baseURL = URL(string: "http://Shishiras-MacBook-Air.local:8080")!
-//    static let baseURL = URL(string: "http://localhost:8080")!
-    static let baseURL = URL(string: "https://5d7d-128-135-204-152.ngrok-free.app")! //jJH4Q7ERfJ9HpE3D
+    /// Base URL where our application is running. We used ngrok to route our localhost to a globally accessible link
+    static let baseURL = URL(string: "https://5d7d-128-135-204-152.ngrok-free.app")!
 
     /// Supported HTTP methods.
     enum Method: String {

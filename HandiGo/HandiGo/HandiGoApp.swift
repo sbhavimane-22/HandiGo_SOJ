@@ -1,10 +1,3 @@
-//
-//  HandiGoApp.swift
-//  HandiGo
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import SwiftUI
 
 @main
@@ -13,6 +6,7 @@ struct HandiGoApp: App {
 
     var body: some Scene {
         WindowGroup {
+            // go to the content view (home screen of app) when the app is opened
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

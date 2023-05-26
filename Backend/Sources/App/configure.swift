@@ -1,10 +1,3 @@
-//
-//  configure.swift
-//  
-//
-//  Created by Shishira Bhavimane on 5/17/23.
-//
-
 import MongoDBVapor
 import Vapor
 
